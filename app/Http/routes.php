@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/token', ['uses' => 'TokenController@newToken', 'as' => 'new-token']);

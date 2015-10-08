@@ -18,10 +18,15 @@ class TokenController extends Controller
     {
         $forPage = $request->input('forPage');
         $applicationSid = config('services.twilio')['applicationSid'];
-
         $capability->allowClientOutgoing($applicationSid);
-        $token = $capability->generateToken();
 
+        if ($forPage === route('dashboard')) {
+            $capability->allowClientIncoming('support_agent');
+        } else {
+            $capability->allowClientIncoming('customer');
+        }
+
+        $token = $capability->generateToken();
         return response()->json(['token' => $token]);
     }
 }

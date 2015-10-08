@@ -33,7 +33,7 @@
 
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Support dashboard</a></li>
+            <li><a href="{{ route('dashboard') }}">Support dashboard</a></li>
           </ul>
         </div>
       </div>

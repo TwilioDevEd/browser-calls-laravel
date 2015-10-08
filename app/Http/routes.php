@@ -1,5 +1,7 @@
 <?php
 
+use \App\Ticket;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -20,7 +22,8 @@ Route::get(
     ['uses' => 'DashboardController@dashboard', 'as' => 'dashboard']
 );
 Route::get(
-    '/', function () {
+    '/', ['as' => 'home', function () {
         return response()->view('index');
-    }
+    }]
 );
+Route::resource('ticket', 'TicketController', ['only' => ['store']]);

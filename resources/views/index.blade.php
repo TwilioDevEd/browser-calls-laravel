@@ -59,11 +59,23 @@
 
       <div class="col-md-6 col-md-pull-6">
 
-        <form method="post">
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-lg btn-block">Submit ticket</button>
-            </div>
-        </form>
+          {!! Form::open(['url' => route('ticket.store')]) !!}
+              <div class="form-group">
+                  {!! Form::label('name') !!}
+                  {!! Form::text('name', '', ['class' => 'form-control']) !!}
+              </div>
+              <div class="form-group">
+                  {!! Form::label('phone_number', 'Phone number') !!}
+                  {!! Form::text('phone_number', '', ['class' => 'form-control']) !!}
+              </div>
+              <div class="form-group">
+                  {!! Form::label('description', 'Description') !!}
+                  {!! Form::textarea('description', '', ['class' => 'form-control']) !!}
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Submit ticket</button>
+              </div>
+          {!! Form::close() !!}
 
       </div>
     </div>

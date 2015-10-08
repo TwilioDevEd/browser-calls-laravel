@@ -11,4 +11,16 @@
 |
 */
 
-Route::post('/token', ['uses' => 'TokenController@newToken', 'as' => 'new-token']);
+Route::post(
+    '/token',
+    ['uses' => 'TokenController@newToken', 'as' => 'new-token']
+);
+Route::get(
+    '/dashboard',
+    ['uses' => 'DashboardController@dashboard', 'as' => 'dashboard']
+);
+Route::get(
+    '/', function () {
+        return response()->view('index');
+    }
+);

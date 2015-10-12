@@ -13,6 +13,11 @@ use \App\Ticket;
 |
 */
 
+Route::get(
+    '/', ['as' => 'home', function () {
+        return response()->view('index');
+    }]
+);
 Route::post(
     '/token',
     ['uses' => 'TokenController@newToken', 'as' => 'new-token']
@@ -21,9 +26,11 @@ Route::get(
     '/dashboard',
     ['uses' => 'DashboardController@dashboard', 'as' => 'dashboard']
 );
-Route::get(
-    '/', ['as' => 'home', function () {
-        return response()->view('index');
-    }]
+Route::post(
+    '/ticket',
+    ['uses' => 'TicketController@newTicket', 'as' => 'new-ticket']
 );
-Route::resource('ticket', 'TicketController', ['only' => ['store']]);
+Route::post(
+    '/support/call',
+    ['uses' => 'CallController@newCall', 'as' => 'new-call']
+);

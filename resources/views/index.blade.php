@@ -59,7 +59,7 @@
 
       <div class="col-md-6 col-md-pull-6">
 
-          {!! Form::open(['url' => route('ticket.store')]) !!}
+          {!! Form::open(['url' => route('new-ticket')]) !!}
               <div class="form-group">
                   {!! Form::label('name') !!}
                   {!! Form::text('name', '', ['class' => 'form-control']) !!}

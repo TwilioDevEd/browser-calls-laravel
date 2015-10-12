@@ -20,7 +20,7 @@ class TokenController extends Controller
         $applicationSid = config('services.twilio')['applicationSid'];
         $capability->allowClientOutgoing($applicationSid);
 
-        if ($forPage === route('dashboard')) {
+        if ($forPage === route('dashboard', [], false)) {
             $capability->allowClientIncoming('support_agent');
         } else {
             $capability->allowClientIncoming('customer');

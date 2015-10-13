@@ -1,0 +1,17 @@
+language: php
+php:
+- 5.6
+- 5.5
+install:
+- composer install
+env:
+  global:
+  - DB_DATABASE=browser_calls
+  - APP_ENV=testing
+  - APP_KEY=rJhIZXkCY96k92dDJsC7OadHIVhnarEE
+  - TWILIO_ACCOUNT_SID=ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  - TWILIO_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  - TWILIO_APPLICATION_SID=APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  - TWILIO_NUMBER=+15552737123
+before_script:
+  - psql -c 'create database browser_calls;' -U postgres

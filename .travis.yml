@@ -6,7 +6,9 @@ install:
 - composer install
 env:
   global:
+  - DB_HOST=localhost
   - DB_DATABASE=browser_calls
+  - DB_USERNAME=postgres
   - APP_ENV=testing
   - APP_KEY=rJhIZXkCY96k92dDJsC7OadHIVhnarEE
   - TWILIO_ACCOUNT_SID=ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

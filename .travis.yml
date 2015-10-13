@@ -17,3 +17,4 @@ env:
   - TWILIO_NUMBER=+15552737123
 before_script:
   - psql -c 'create database browser_calls;' -U postgres
+  - php artisan migrate

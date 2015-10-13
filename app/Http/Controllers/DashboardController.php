@@ -12,7 +12,6 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $tickets = Ticket::all();
-
         return view('supportDashboard', ['tickets' => $tickets]);
     }
 }

@@ -10,7 +10,7 @@ use App\Ticket;
 class TicketController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
+     * Store a new ticket
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -26,7 +26,7 @@ class TicketController extends Controller
             $request, [
                 'name' => 'required',
                 // E.164 format
-                'phone_number' => 'required|regex:/^\+?[1-9]\d{1,14}$/',
+                'phone_number' => 'required|regex:/^\+[1-9]\d{1,14}$/',
                 'description' => 'required'
             ], $messages
         );

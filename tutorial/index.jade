@@ -158,7 +158,7 @@
       We use [TwiML](https://www.twilio.com/docs/api/twiml) to respond to the
       request and tell Twilio how to handle the call. Twilio will pass along the
       `phoneNumber` parameter from the previous step in its request, which
-      we will then [Dial](https://www.twilio.com/docs/api/twiml/dial) in our TwiML.
+      we will then [`<Dial>`](https://www.twilio.com/docs/api/twiml/dial) in our TwiML.
 
       We will need to exclude this route from CSRF protection.
 

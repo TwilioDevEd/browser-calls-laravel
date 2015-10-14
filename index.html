@@ -121,7 +121,7 @@ the URL we set on our TwiML Application - in this case,
 <p>We use <a href="https://www.twilio.com/docs/api/twiml">TwiML</a> to respond to the
 request and tell Twilio how to handle the call. Twilio will pass along the
 <code>phoneNumber</code> parameter from the previous step in its request, which
-we will then <a href="https://www.twilio.com/docs/api/twiml/dial">Dial</a> in our TwiML.</p>
+we will then <a href="https://www.twilio.com/docs/api/twiml/dial"><code>&lt;Dial&gt;</code></a> in our TwiML.</p>
 <p>We will need to exclude this route from CSRF protection.</p>
 <hr>
 <p><strong>See also:</strong></p>

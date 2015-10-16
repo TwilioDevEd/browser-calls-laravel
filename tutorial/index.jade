@@ -43,12 +43,12 @@
 
       The home page of our app displays a form for customers to submit
       support tickets. We render a form template as part of the home
-      page and handle the form submission in a different controller.
+      page and handle the form submission in this controller.
 
       The `Ticket` model itself has just a few fields. Here's the
       schema migration used to create it:
 
-      ```php
+      ```
       Schema::create(
           'tickets', function (Blueprint $table) {
               $table->increments('id');
@@ -81,7 +81,7 @@
       function we wrote named `callCustomer()`. That function kicks off a Twilio
       Client call to the phone number passed as its sole parameter.
 
-  .step(data-file='app/Http/Controllers/TokenController.php', data-highlight='19-21, 29-30')
+  .step(data-file='app/Http/Controllers/TokenController.php', data-highlight='17-21, 29-30, 8')
     :markdown
       ## Generate a capability token
 
@@ -137,7 +137,7 @@
 
       We use `Twilio.Device.connect()` to begin a new outgoing call. Our backend
       will tell Twilio how to handle this call, so we include a `phoneNumber`
-      parameter that we'll use in our `call` view.
+      parameter that we'll use in our `newCall` view.
 
       Let's look at that view next.
 
@@ -147,7 +147,7 @@
 
       * [Twilio.Device.connect()](https://www.twilio.com/docs/client/device#connect)
 
-  .step(data-file='app/Http/Controllers/CallController.php', data-highlight='18-35')
+  .step(data-file='app/Http/Controllers/CallController.php', data-highlight='18-28, 31-35, 8')
     :markdown
       ## Connect the call to a phone number
 
@@ -158,9 +158,7 @@
       We use [TwiML](https://www.twilio.com/docs/api/twiml) to respond to the
       request and tell Twilio how to handle the call. Twilio will pass along the
       `phoneNumber` parameter from the previous step in its request, which
-      we will then [`<Dial>`](https://www.twilio.com/docs/api/twiml/dial) in our TwiML.
-
-      We will need to exclude this route from CSRF protection.
+      we will then [Dial](https://www.twilio.com/docs/api/twiml/dial) in our TwiML.
 
       ---
 
@@ -210,17 +208,21 @@
 
       * [Twilio.Device.connect()](https://www.twilio.com/docs/client/device#connect)
 
-  .step(data-file='app/Http/Controllers/TokenController.php', data-highlight='23-24')
+  .step(data-file='app/Http/Controllers/CallController.php', data-highlight='18-35, 8')
     :markdown
       ## Connect the call to the support agent's client
 
       To allow our support agents to accept incoming calls we use the
       `allowClientIncoming()` method when generating their capability token,
-      passing `support_agent` as the client's name.
+      passing `support_agent` as the client's name:
 
-      When Twilio sends a POST request to our `call` view, we can connect the
+      ```
+      $capability->allowClientIncoming('support_agent');
+      ```
+
+      When Twilio sends a POST request to our `newCall` view, we can connect the
       call to our support agent by responding with a
-      [<Client>](https://www.twilio.com/docs/api/twiml/client) TwiML noun and
+      [Client](https://www.twilio.com/docs/api/twiml/client) TwiML noun and
       the `support_agent` name.
 
       ---
@@ -296,11 +298,11 @@
       If you're a PHP developer working with Twilio, you might also enjoy these
       tutorials:
 
-      [**Click-To-Call (Laravel)**](//www.twilio.com/docs/howto/walkthrough/click-to-call/php/laravel)
+      [**Click-To-Call**](//www.twilio.com/docs/howto/walkthrough/click-to-call/php/laravel)
 
       Put a button on your web page that connects visitors to live support or sales people via telephone.
 
-      [**Automated Survey (Laravel)**](https://www.twilio.com/docs/howto/walkthrough/automated-survey/php/laravel)
+      [**Automated Survey**](https://www.twilio.com/docs/howto/walkthrough/automated-survey/php/laravel)
 
       Instantly collect structured data from your users with a survey conducted
       over a voice call or SMS text messages.

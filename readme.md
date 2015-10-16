@@ -63,6 +63,11 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
    ```bash
    $ php artisan migrate
    ```
+1. Load the seed data:
+
+   ```bash
+   $ php artisan db:seed
+   ```
 1. Run the application using Artisan.
 
    ```bash

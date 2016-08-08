@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Services_Twilio_Capability;
+use Twilio\Jwt\ClientToken;
 
 class TwilioCapabilityProvider extends ServiceProvider
 {
@@ -15,11 +15,11 @@ class TwilioCapabilityProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'Services_Twilio_Capability', function ($app) {
+            ClientToken::class, function ($app) {
                 $accountSid = config('services.twilio')['accountSid'];
                 $token = config('services.twilio')['authToken'];
 
-                return new Services_Twilio_Capability($accountSid, $token);
+                return new ClientToken($accountSid, $token);
             }
         );
     }

@@ -5,6 +5,8 @@ make browser-to-phone and browser-to-browser calls with ease. The
 unsatisfied customers of the Birchwood Bicycle Polo Co. need your
 help!
 
+[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/browser-calls/php/laravel)!
+
 [![Build Status](https://travis-ci.org/TwilioDevEd/browser-calls-laravel.svg?branch=master)](https://travis-ci.org/TwilioDevEd/browser-calls-laravel)
 
 ### Create a TwiML App
@@ -73,6 +75,23 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
    ```bash
    $ php artisan serve
    ```
+
+   It is `artisan serve` default behaviour to use `http://localhost:8000`
+   when
+   the application is run. This means that the ip addresses where your
+   app will be reachable on you local machine will vary depending on the
+   operating system.
+
+   The most common scenario, is that your app will be reachable through
+   address `http://127.0.0.1:8000`, and this is important because ngrok
+   creates the tunnel using only that address. So, if `http://127.0.0.1:8000`
+   is not reachable in your local machine when you run the app, you must
+   tell artisan to use this address, like this:
+
+   ```bash
+   $ php artisan serve --host=127.0.0.1
+   ```
+
 1. Expose the application to the wider Internet using [ngrok](https://ngrok.com/)
 
    ```bash
@@ -83,8 +102,14 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
    this:
 
    ```
-   http://<your-ngrok-subdomain>.ngrok.io/support/call
+   https://<your-ngrok-subdomain>.ngrok.io/support/call
    ```
+
+1. Go to `https://<your-ngrok-subdomain>.ngrok.io` to use this application.
+
+   __Note:__ Make sure you use the `https` version of your ngrok URL as some
+   browsers won't allow access to the microphone unless you are using a secure
+   SSL connection.
 
 ### Dependencies
 

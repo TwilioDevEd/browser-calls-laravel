@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Services_Twilio_Capability as TwilioCapability;
+use Twilio\Jwt\ClientToken;
 
 class TokenController extends Controller
 {
@@ -14,19 +14,19 @@ class TokenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function newToken(Request $request, TwilioCapability $capability)
+    public function newToken(Request $request, ClientToken $clientToken)
     {
         $forPage = $request->input('forPage');
         $applicationSid = config('services.twilio')['applicationSid'];
-        $capability->allowClientOutgoing($applicationSid);
+        $clientToken->allowClientOutgoing($applicationSid);
 
         if ($forPage === route('dashboard', [], false)) {
-            $capability->allowClientIncoming('support_agent');
+            $clientToken->allowClientIncoming('support_agent');
         } else {
-            $capability->allowClientIncoming('customer');
+            $clientToken->allowClientIncoming('customer');
         }
 
-        $token = $capability->generateToken();
+        $token = $clientToken->generateToken();
         return response()->json(['token' => $token]);
     }
 }

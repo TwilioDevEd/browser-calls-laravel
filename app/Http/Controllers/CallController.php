@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Services_Twilio_Twiml;
+use Twilio\Twiml;
 
 class CallController extends Controller
 {
@@ -17,7 +17,7 @@ class CallController extends Controller
      */
     public function newCall(Request $request)
     {
-        $response = new Services_Twilio_Twiml;
+        $response = new Twiml();
         $callerIdNumber = config('services.twilio')['number'];
 
         $dial = $response->dial(['callerId' => $callerIdNumber]);

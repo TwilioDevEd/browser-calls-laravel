@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Twilio\Jwt\ClientToken;
 
 class TokenControllerTest extends TestCase
 {
@@ -12,7 +13,7 @@ class TokenControllerTest extends TestCase
         $applicationSid = config('services.twilio')['applicationSid'];
         $mockToken = 'th1stot3satok3n';
 
-        $mockTwilioCapability = Mockery::mock('Services_Twilio_Capability')
+        $mockTwilioCapability = Mockery::mock(ClientToken::class)
                               ->makePartial();
         $mockTwilioCapability
             ->shouldReceive('allowClientOutgoing')
@@ -31,7 +32,7 @@ class TokenControllerTest extends TestCase
             ->andReturn($mockToken);
 
         $this->app->instance(
-            'Services_Twilio_Capability',
+            ClientToken::class,
             $mockTwilioCapability
         );
 

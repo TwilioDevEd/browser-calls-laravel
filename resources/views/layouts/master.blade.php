@@ -13,7 +13,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link href="{{ asset('css/bicycle-polo.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bicycle-polo.css', true) }}" rel="stylesheet">
 
     @yield('css')
   </head>
@@ -56,7 +56,7 @@
 
     @yield('javascript')
 
-    <script src="{{ asset('js/browser-calls.js') }}"></script>
+    <script src="{{ asset('js/browser-calls.js', true) }}"></script>
 
   </body>
 

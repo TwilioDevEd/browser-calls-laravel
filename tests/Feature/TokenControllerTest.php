@@ -5,6 +5,8 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Twilio\Jwt\ClientToken;
 
+use Tests\TestCase;
+
 class TokenControllerTest extends TestCase
 {
     public function testNewToken()

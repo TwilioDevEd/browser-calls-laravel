@@ -1,7 +1,9 @@
 <?php
+namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
 class CallControllerTest extends TestCase
 {
@@ -16,7 +18,7 @@ class CallControllerTest extends TestCase
             route('new-call'),
             ['phoneNumber' => $fakeCustomerNumber]
         );
-        $responseDocument = new SimpleXMLElement($response->getContent());
+        $responseDocument = new \SimpleXMLElement($response->getContent());
 
         // Then
         $this->assertNotNull($responseDocument->Dial);
@@ -38,7 +40,7 @@ class CallControllerTest extends TestCase
             'POST',
             route('new-call')
         );
-        $responseDocument = new SimpleXMLElement($response->getContent());
+        $responseDocument = new \SimpleXMLElement($response->getContent());
 
         // Then
         $this->assertNotNull($responseDocument->Dial);

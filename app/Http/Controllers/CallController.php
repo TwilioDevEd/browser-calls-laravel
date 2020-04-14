@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Twilio\Twiml;
+use Twilio\TwiML\VoiceResponse;
 
 class CallController extends Controller
 {
@@ -17,11 +17,10 @@ class CallController extends Controller
      */
     public function newCall(Request $request)
     {
-        $response = new Twiml();
+        $response = new VoiceResponse();
         $callerIdNumber = config('services.twilio')['number'];
 
-        $dial = $response->dial(['callerId' => $callerIdNumber]);
-
+        $dial = $response->dial(null, ['callerId'=>$callerIdNumber]);
         $phoneNumberToDial = $request->input('phoneNumber');
 
         if (isset($phoneNumberToDial)) {

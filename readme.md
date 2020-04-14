@@ -1,6 +1,10 @@
+<a  href="https://www.twilio.com">
+<img  src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg"  alt="Twilio"  width="250"  />
+</a>
+
 # Browser Calls (Laravel)
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/browser-calls-laravel.svg?branch=master)](https://travis-ci.org/TwilioDevEd/browser-calls-laravel)
+[![Build Status](https://github.com/TwilioDevEd/browser-calls-laravel/workflows/Laravel%20CI/badge.svg)](https://github.com/TwilioDevEd/browser-calls-laravel/actions)
 
 > We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
 
@@ -15,7 +19,7 @@ help!
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-Create a new TwiML app at https://www.twilio.com/user/account/apps/add and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
+Create a new TwiML app at https://www.twilio.com/console/voice/twiml/apps and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
 
 ![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif)
 
@@ -26,14 +30,20 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
 ### Run the application
 
 1. Clone the repository and `cd` into it.
-1. Install the application's dependencies with [Composer](https://getcomposer.org/)
+1. Install the application's php dependencies with [Composer](https://getcomposer.org/)
 
    ```bash
    $ composer install
    ```
-1. The application uses PostgreSQL as the persistence layer. If you
+1. The application uses SQLite as the persistence layer. If you
    don't have it already, you should install it. The easiest way is by
    using [Postgres.app](http://postgresapp.com/).
+
+1. Install the application's JavaScript dependencies with [NodeJS](https://nodejs.org/en/):
+   ```bash
+   npm install
+   ```
+
 1. Create a database.
 
    ```bash
@@ -72,13 +82,18 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
    ```bash
    $ php artisan db:seed
    ```
+1. Build front-end assets.
+
+   ```bash
+   $ npm run dev
+   ```
 1. Run the application using Artisan.
 
    ```bash
    $ php artisan serve
    ```
 
-   It is `artisan serve` default behaviour to use `http://localhost:8000`
+   It is `artisan serve` default behavior to use `http://localhost:8000`
    when
    the application is run. This means that the ip addresses where your
    app will be reachable on you local machine will vary depending on the
@@ -123,5 +138,5 @@ This application uses this Twilio helper library:
 1. Run at the top-level directory:
 
    ```bash
-   $ phpunit
+   $ php artisan test
    ```

@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@yield('title', 'Calls') - Browser Calls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -12,28 +13,30 @@
     <![endif]-->
 
     <!-- CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link href="{{ asset('css/bicycle-polo.css', true) }}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
 
     @yield('css')
   </head>
 
   <body>
 
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Birchwood Bicycle Polo Co.</a>
-        </div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Birchwood Bicycle Polo Co.</a>
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ route('dashboard') }}">Support dashboard</a></li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('dashboard') }}">Support dashboard</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -41,22 +44,19 @@
 
     @yield('content')
 
-    <div class="container">
+    <footer class="container">
+      <div class="row">
+        <p class="p-2 flex-grow-1">&copy; Your Company 2020</p>
+        @yield('footer')
+      </div>
+    </footer>
 
-      <footer>
-        <p>&copy; Your Company 2015</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-    <!-- JavaScript -->
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
+    <script src="/js/vendor.js"></script>
 
     @yield('javascript')
 
-    <script src="{{ asset('js/browser-calls.js', true) }}"></script>
+    <script src="/js/manifest.js"></script>
+    <script src="/js/browser-calls.js"></script>
 
   </body>
 

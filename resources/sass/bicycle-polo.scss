@@ -1,0 +1,47 @@
+/* Custom CSS for Bicycle Polo example */
+
+.bicycle-polo-background {
+  background-image: url("../img/bicycle-polo.jpg");
+  background-size: cover;
+  background-position: 75% 25%;
+}
+
+.bicycle-polo-text {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding-bottom: 1rem;
+
+  h1 {
+    font-weight: bold;
+  }
+
+  @media (min-width: 768px) {
+    margin-right: 5%;
+    width: 40%;
+  }
+}
+
+// .bicycle-polo-text h1 {
+//   font-weight: bold;
+// }
+
+// @media (min-width: 768px) {
+//   .bicycle-polo-text {
+//     margin-right: 5%;
+//     width: 40%;
+//   }
+// }
+
+.answer-button,
+.call-support-button {
+  width: 48%;
+  float: left;
+}
+
+.hangup-button {
+  width: 48%;
+  float: right;
+}
+
+.container {
+  padding-top: 15px;
+}

@@ -9,24 +9,30 @@ use Twilio\Jwt\ClientToken;
 
 class TokenController extends Controller
 {
+
+    public function __construct(ClientToken $clientToken)
+    {
+        $this->clientToken=$clientToken;
+    }
+
     /**
      * Create a new capability token
      *
      * @return \Illuminate\Http\Response
      */
-    public function newToken(Request $request, ClientToken $clientToken)
+    public function newToken(Request $request)
     {
         $forPage = $request->input('forPage');
         $applicationSid = config('services.twilio')['applicationSid'];
-        $clientToken->allowClientOutgoing($applicationSid);
+        $this->clientToken->allowClientOutgoing($applicationSid);
 
         if ($forPage === route('dashboard', [], false)) {
-            $clientToken->allowClientIncoming('support_agent');
+            $this->clientToken->allowClientIncoming('support_agent');
         } else {
-            $clientToken->allowClientIncoming('customer');
+            $this->clientToken->allowClientIncoming('customer');
         }
 
-        $token = $clientToken->generateToken();
+        $token = $this->clientToken->generateToken();
         return response()->json(['token' => $token]);
     }
 }

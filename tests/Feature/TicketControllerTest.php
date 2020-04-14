@@ -2,12 +2,13 @@
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use App\Ticket;
 
 class TicketControllerTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
     public function testCreateNewTicket()
     {
@@ -34,8 +35,8 @@ class TicketControllerTest extends TestCase
         $this->assertEquals($ticket->phone_number, $validPhoneNumber);
         $this->assertEquals($ticket->description, 'I lost my ability to even');
 
-        $this->assertRedirectedToRoute('home');
-        $this->assertSessionHas('status');
+        $response->assertRedirect(route('home'));
+        $response->assertSessionHas('status');
 
         $flashMessage = $this->app['session']->get('status');
         $this->assertEquals(

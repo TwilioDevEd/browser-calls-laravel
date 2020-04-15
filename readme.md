@@ -35,9 +35,8 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
    ```bash
    $ composer install
    ```
-1. The application uses SQLite as the persistence layer. If you
-   don't have it already, you should install it. The easiest way is by
-   using [Postgres.app](http://postgresapp.com/).
+1. The application uses [SQLite](https://www.sqlite.org/index.html) as the persistence layer. If you
+   don't have it already, you should install it. On OSX and Linux you can install it using the corresponding OS package manager (OSX 10.4 and up ship with SQLite by default).
 
 1. Install the application's JavaScript dependencies with [NodeJS](https://nodejs.org/en/):
    ```bash

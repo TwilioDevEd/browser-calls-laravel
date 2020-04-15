@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, macos-latest]
     name: PHP Test on ${{ matrix.operating-system }}
     steps:
       - name: Checkout
@@ -35,5 +35,7 @@ jobs:
         run: composer install --dev -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Generate key
         run: php artisan key:generate
+      - name: Setup database
+        run: touch database/database.sqlite && php artisan migrate
       - name: Execute tests (Unit and Feature tests)
         run: php artisan test

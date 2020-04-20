@@ -29,13 +29,11 @@ jobs:
           extensions: mbstring, fileinfo
           coverage: none
 
-      - name: Copy ENV Laravel Configuration for CI
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Dependencies (PHP vendors)
         run: composer install --dev -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Copy ENV Laravel Configuration for CI
+        run: composer run post-root-package-install
       - name: Generate key
         run: php artisan key:generate
-      - name: Setup database
-        run: touch database/database.sqlite && php artisan migrate
       - name: Execute tests (Unit and Feature tests)
         run: php artisan test

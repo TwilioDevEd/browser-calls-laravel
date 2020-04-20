@@ -19,9 +19,7 @@ help!
 
 This project is configured to use a **TwiML App**, which allows us to easily set the voice URLs for all Twilio phone numbers we purchase in this app.
 
-Create a new TwiML app at https://www.twilio.com/console/voice/twiml/apps and use its `Sid` as the `TWIML_APPLICATION_SID` environment variable wherever you run this app.
-
-![Creating a TwiML App](http://howtodocs.s3.amazonaws.com/call-tracking-twiml-app.gif)
+Create a new TwiML app at https://www.twilio.com/console/voice/twiml/apps and use its `Sid` as the `TWILIO_APPLICATION_SID` environment variable wherever you run this app.
 
 Once you have created your TwiML app, configure your Twilio phone number to use it ([instructions here](https://www.twilio.com/help/faq/twilio-client/how-do-i-create-a-twiml-app)).
 
@@ -37,27 +35,23 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
    ```
 1. The application uses [SQLite](https://www.sqlite.org/index.html) as the persistence layer. If you
    don't have it already, you should install it. On OSX and Linux you can install it using the corresponding OS package manager (OSX 10.4 and up ship with SQLite by default).
+   Also check that you have the PHP SQLite driver installed (`php7.X-sqlite3`). 
 
 1. Install the application's JavaScript dependencies with [NodeJS](https://nodejs.org/en/):
    ```bash
-   npm install
+   $ npm install
    ```
 
 1. Create a database.
 
    ```bash
-   $ createdb browser_calls
+   $ touch database/database.sqlite
    ```
 1. Copy the sample configuration file and edit it to match your configuration.
 
     ```bash
     $ cp .env.example .env
     ```
-
-   You'll need to set `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, and
-   `DB_PASSWORD`. You can often leave `DB_USERNAME` and `DB_PASSWORD`
-   blank. `DB_HOST` should be `localhost` if you're running the DB in
-   your own machine.
 
    You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` under
    your

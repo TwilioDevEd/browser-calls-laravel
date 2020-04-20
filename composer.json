@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "twiliodeved/browser-calls-laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Browser Calls with Laravel.",
     "keywords": [
         "framework",
         "laravel"

@@ -53,12 +53,15 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
     $ cp .env.example .env
     ```
 
-   You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` under
-   your
+   You can find your `TWILIO_ACCOUNT_SID` under your
    [Twilio Account Settings](https://www.twilio.com/user/account/settings). Set
    `TWILIO_APPLICATION_SID` to the app SID you created
    before. `TWILIO_NUMBER` should be set to the phone number you
    purchased above.
+
+   The `API_KEY` and `API_SECRET` values are your REST API Key information needed
+   to create an [Access Token](https://www.twilio.com/docs/iam/access-tokens).
+   You can create [one here](https://www.twilio.com/console/project/api-keys).
 
 1. Generate an `APP_KEY`:
 
@@ -115,11 +118,25 @@ If you don't have a Twilio phone number yet, you can purchase a new number in yo
    https://<your-ngrok-subdomain>.ngrok.io/support/call
    ```
 
-1. Go to `https://<your-ngrok-subdomain>.ngrok.io` to use this application.
+### Try it out
+
+1. To create a support ticket go to the home page.
+   On this page you could fill some fields and create a ticket or you can call to support.
+
+   ```
+   https://<your-ngrok-subdomain>.ngrok.io
+   ```
 
    __Note:__ Make sure you use the `https` version of your ngrok URL as some
    browsers won't allow access to the microphone unless you are using a secure
    SSL connection.
+
+1. To respond to support tickets go to the `dashboard` page (you should open two windows or tabs).
+   On this page you could call customers and answers phone calls.
+
+   ```
+   https://<your-ngrok-subdomain>.ngrok.io/dashboard
+   ```
 
 ### Dependencies
 
@@ -133,3 +150,10 @@ This application uses this Twilio helper library:
    ```bash
    $ php artisan test
    ```
+
+## Meta
+
+* No warranty expressed or implied. Software is as is. Diggity.
+* The CodeExchange repository can be found [here](https://github.com/twilio-labs/code-exchange/).
+* MIT License
+* Lovingly crafted by Twilio Developer Education.

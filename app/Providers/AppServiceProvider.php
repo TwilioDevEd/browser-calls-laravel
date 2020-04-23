@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Twilio\Jwt\ClientToken;
+use Twilio\Jwt\AccessToken;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,13 +16,16 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind(
-            ClientToken::class, function ($app) {
+            AccessToken::class,
+            function ($app) {
                 $accountSid = config('services.twilio')['accountSid'];
-                $token = config('services.twilio')['authToken'];
+                $apiKey = config('services.twilio')['apiKey'];
+                $apiSecret = config('services.twilio')['apiSecret'];
 
-                return new ClientToken($accountSid, $token);
+                return new AccessToken($accountSid, $apiKey, $apiSecret, 3600, 'identity');
             }
         );
+
     }
 
     /**

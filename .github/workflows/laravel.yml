@@ -3,12 +3,11 @@ name: Laravel CI
 on: [pull_request]
 
 jobs:
-  run:
+  build:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
         operating-system: [ubuntu-latest, macos-latest]
-    name: PHP Test on ${{ matrix.operating-system }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2

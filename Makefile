@@ -1,5 +1,4 @@
 install:
-	mkdir -p database
 	touch database/database.sqlite
 	composer install
 	php artisan key:generate --force

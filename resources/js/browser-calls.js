@@ -83,12 +83,14 @@ function setupClient() {
     $.post("/token", {
         forPage: window.location.pathname,
         _token: $('meta[name="csrf-token"]').attr('content')
-    }, function(data) {
+    }).done(function (data) {
         // Set up the Twilio Client device with the token
         device = new Device();
         device.setup(data.token);
 
         setupHandlers(device);
+    }).fail(function () {
+        updateCallStatus("Could not get a token from server!");
     });
 
 };

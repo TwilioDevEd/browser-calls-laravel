@@ -3,7 +3,8 @@
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Twilio\Jwt\ClientToken;
+use Twilio\Jwt\AccessToken;
+use Twilio\Jwt\Grants\VoiceGrant;
 
 use Tests\TestCase;
 
@@ -15,26 +16,27 @@ class TokenControllerTest extends TestCase
         $applicationSid = config('services.twilio')['applicationSid'];
         $mockToken = 'th1stot3satok3n';
 
-        $mockTwilioCapability = Mockery::mock(ClientToken::class)
-                              ->makePartial();
-        $mockTwilioCapability
-            ->shouldReceive('allowClientOutgoing')
+        $mockVoiceGrant = Mockery::mock(VoiceGrant::class)
+            ->makePartial();
+        $mockVoiceGrant
+            ->shouldReceive('setOutgoingApplicationSid')
             ->with($applicationSid);
+        $mockVoiceGrant
+            ->shouldReceive('setIncomingAllow')
+            ->with(true);
+
+        $mockTwilioCapability = Mockery::mock(AccessToken::class)
+            ->makePartial();
+        $mockTwilioCapability
+            ->shouldReceive('addGrant')
+            ->with($mockVoiceGrant);
 
         $mockTwilioCapability
-            ->shouldNotReceive('allowClientIncoming')
-            ->with('customer');
-
-        $mockTwilioCapability
-            ->shouldReceive('allowClientIncoming')
-            ->with('support_agent');
-
-        $mockTwilioCapability
-            ->shouldReceive('generateToken')
+            ->shouldReceive('toJWT')
             ->andReturn($mockToken);
 
         $this->app->instance(
-            ClientToken::class,
+            AccessToken::class,
             $mockTwilioCapability
         );
 
@@ -47,6 +49,8 @@ class TokenControllerTest extends TestCase
 
         // Then
         $newToken = json_decode($newTokenResponse->getContent());
+        
+        $newTokenResponse->assertSee('token', true);
         $this->assertEquals(
             $mockToken,
             $newToken->token

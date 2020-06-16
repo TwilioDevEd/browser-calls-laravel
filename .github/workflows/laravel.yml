@@ -3,12 +3,11 @@ name: Laravel CI
 on: [pull_request]
 
 jobs:
-  run:
+  build:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, macos-latest]
-    name: PHP Test on ${{ matrix.operating-system }}
+        operating-system: [windows-latest, macos-latest, ubuntu-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -26,7 +25,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 7.4
-          extensions: mbstring, fileinfo
+          extensions: mbstring, fileinfo, pdo_sqlite
           coverage: none
 
       - name: Install Dependencies (PHP vendors)

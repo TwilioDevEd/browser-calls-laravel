@@ -1,3 +1,5 @@
+.PHONY: install serve
+
 install:
 	touch database/database.sqlite
 	composer install

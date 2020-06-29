@@ -23,6 +23,6 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "twilio-client": "^1.10.1"
+        "twilio-client": "^1.11.0"
     }
 }

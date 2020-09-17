@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01a1c0109e280da354299657613eed09",
+    "content-hash": "268b12117c3a82635f9531ed7ae2419c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1035,6 +1035,32 @@
                 "markdown",
                 "md",
                 "parser"
+            ],
+            "funding": [
+                {
+                    "url": "https://enjoy.gitstore.app/repositories/thephpleague/commonmark",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.colinodell.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/colinpodell/10.00",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/colinodell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/colinodell",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/league%2fcommonmark",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-13T20:52:18+00:00"
         },
@@ -3640,23 +3666,23 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.2.0",
+            "version": "6.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "a891817d30c31d86e89b5fbfe46a8ef6b692be12"
+                "reference": "703fe5dfb8ae7e862dfa907e88ca289e4a7666b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/a891817d30c31d86e89b5fbfe46a8ef6b692be12",
-                "reference": "a891817d30c31d86e89b5fbfe46a8ef6b692be12",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/703fe5dfb8ae7e862dfa907e88ca289e4a7666b9",
+                "reference": "703fe5dfb8ae7e862dfa907e88ca289e4a7666b9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1.0"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "^6.3",
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
                 "phpunit/phpunit": ">=4.5",
                 "theseer/phpdox": "^0.12.0"
             },
@@ -3686,7 +3712,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2020-04-01T19:52:37+00:00"
+            "time": "2020-09-16T21:25:06+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3749,6 +3775,16 @@
                 "dotenv",
                 "env",
                 "environment"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-12T15:20:09+00:00"
         },
@@ -4974,6 +5010,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {

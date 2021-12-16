@@ -2204,6 +2204,10 @@
                 {
                     "url": "https://github.com/ramsey",
                     "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/ramsey/uuid",
+                    "type": "tidelift"
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
@@ -2277,6 +2281,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "symfony/mailer",
             "time": "2021-01-12T09:35:59+00:00"
         },
         {
@@ -4419,16 +4424,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.22.0",
+            "version": "6.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "b24040f9bcd2237e4210dcafd9a287fad9759a8a"
+                "reference": "d4a5ad22e761a14c5e355debb88a6f17640b247c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/b24040f9bcd2237e4210dcafd9a287fad9759a8a",
-                "reference": "b24040f9bcd2237e4210dcafd9a287fad9759a8a",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/d4a5ad22e761a14c5e355debb88a6f17640b247c",
+                "reference": "d4a5ad22e761a14c5e355debb88a6f17640b247c",
                 "shasum": ""
             },
             "require": {
@@ -4465,7 +4470,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2021-04-21T19:45:05+00:00"
+            "time": "2021-12-15T20:48:09+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
